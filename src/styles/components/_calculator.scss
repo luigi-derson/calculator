@@ -1,0 +1,20 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  text-align: center;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+@media screen and (min-width: 800px) {
+  .app {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+}

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Display from "./Display";
 import Keypad from "./Keypad";
-import "../App.css";
 
 const defaultState = {
   currentNumber: "",
@@ -168,17 +167,19 @@ export default class CalculatorApp extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Display
-          operations={this.state.operations}
-          result={this.state.result}
-        />
-        <Keypad
-          handleOnClickNumber={this.handleOnClickNumber}
-          handleOnClickOperator={this.handleOnClickOperator}
-          handleOnClickResult={this.handleOnClickResult}
-          handleOnClickAC={this.handleOnClickAC}
-        />
+      <div className="app-container">
+        <div className="app">
+          <Display
+            operations={this.state.operations}
+            result={this.state.result}
+          />
+          <Keypad
+            handleOnClickNumber={this.handleOnClickNumber}
+            handleOnClickOperator={this.handleOnClickOperator}
+            handleOnClickResult={this.handleOnClickResult}
+            handleOnClickAC={this.handleOnClickAC}
+          />
+        </div>
       </div>
     );
   }

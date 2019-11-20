@@ -1,0 +1,33 @@
+.keypad {
+  grid-row: span 3;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+}
+
+.special-operator {
+  font-weight: 400;
+  font-size: 2em;
+}
+
+.invert {
+  font-size: 3em;
+  font-weight: 400;
+}
+
+.operator {
+  color: $blue;
+  font-size: 3.5em;
+  font-weight: 400;
+}
+
+.equal {
+  background-color: $blue;
+  color: white;
+  font-size: 3.5em;
+  font-weight: 400;
+  grid-column: span 2;
+}
+
+.equal:hover {
+  background: darken($blue, 5%);
+}

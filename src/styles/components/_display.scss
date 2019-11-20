@@ -1,0 +1,21 @@
+.display {
+  background: $blue;
+  background: radial-gradient(circle at top left, lighten($blue, 8%), $blue);
+  color: white;
+  border: 1px solid $gray-dark;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: center;
+  text-align: right;
+  flex-direction: column;
+}
+
+.operations {
+  font-size: 2em;
+}
+
+.result {
+  font-size: 5em;
+  font-weight: 400;
+  padding-top: 1rem;
+}
