@@ -1,11 +1,11 @@
 import React from "react";
 
-const Button = props => (
+const Button = ({ type, value, handleOnClick }) => (
   <button
-    onClick={() => props.handleOnClick(props.children)}
-    className={`button${props.type ? " " + props.type : ""}`}
+    onClick={() => handleOnClick(value)}
+    className={`button ${type || ""}`}
   >
-    {props.children}
+    {value}
   </button>
 );
 

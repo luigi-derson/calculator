@@ -8,28 +8,33 @@ const defaultState = {
   previousNumber: "",
   operator: "",
   operations: "",
-  result: ""
+  result: 0
 };
 
 export default class CalculatorApp extends Component {
   state = defaultState;
 
-  handleOnClickNumber = numberValue => {
+  handleOnClickNumber = value => {
+    const { currentNumber } = this.state;
+
     const addValueToState = () => {
       this.setState(prevState => ({
-        operations: prevState.operations + numberValue,
-        currentNumber: prevState.currentNumber + numberValue
+        operations: prevState.operations + value,
+        currentNumber: prevState.currentNumber + value
       }));
     };
-    if (numberValue === "." && !this.state.currentNumber.includes(".")) {
+    if (value === "." && !currentNumber.includes(".")) {
       addValueToState();
     }
 
-    if (numberValue === "0" && !this.state.currentNumber.startsWith("0")) {
+    if (
+      value === "0" &&
+      (!currentNumber.startsWith("0") || currentNumber.indexOf(".") === 1)
+    ) {
       addValueToState();
     }
 
-    if (!isNaN(numberValue) && numberValue !== "0") {
+    if (!isNaN(value) && value !== "0") {
       addValueToState();
     }
   };
@@ -56,6 +61,8 @@ export default class CalculatorApp extends Component {
       case "÷": {
         return addOperatorToState("divide");
       }
+
+      // I need to improve and make the cases below work
       case "%": {
         return this.setState(prevState => ({
           operator: "percentage",
@@ -64,7 +71,7 @@ export default class CalculatorApp extends Component {
           currentNumber: ""
         }));
       }
-      case "+-": {
+      case "±": {
         const isNegative = parseFloat(this.state.currentNumber) < 0;
         return this.setState(prevState => ({
           operator: "invert",
@@ -78,7 +85,7 @@ export default class CalculatorApp extends Component {
         }));
       }
       default:
-        return this.setState({ operator: "" });
+        return this.state;
     }
   };
 
@@ -88,7 +95,12 @@ export default class CalculatorApp extends Component {
       this.state.currentNumber &&
       this.state.operator
     ) {
-      this.evaluateResult(this.state);
+      this.setState({
+        operations: "",
+        currentNumber: "",
+        previousNumber: "",
+        operator: ""
+      });
     }
   };
 
@@ -96,7 +108,7 @@ export default class CalculatorApp extends Component {
     this.setState(defaultState);
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     if (
       prevState.operations.length !== this.state.operations.length &&
       this.state.currentNumber
@@ -149,7 +161,7 @@ export default class CalculatorApp extends Component {
       // }
       default:
         return this.setState({
-          result: parseFloat(currentNumber).toLocaleString()
+          result: currentNumber || 0
         });
     }
   };
@@ -157,7 +169,10 @@ export default class CalculatorApp extends Component {
   render() {
     return (
       <div className="App">
-        <Display {...this.state} />
+        <Display
+          operations={this.state.operations}
+          result={this.state.result}
+        />
         <Keypad
           handleOnClickNumber={this.handleOnClickNumber}
           handleOnClickOperator={this.handleOnClickOperator}
