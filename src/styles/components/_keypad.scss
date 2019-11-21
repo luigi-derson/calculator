@@ -2,6 +2,7 @@
   grid-row: span 3;
   display: grid;
   grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+  height: 70%;
 }
 
 .special-operator {
@@ -28,6 +29,7 @@
   grid-column: span 2;
 }
 
+.equal:active,
 .equal:hover {
   background: darken($blue, 5%);
 }

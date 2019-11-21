@@ -3,11 +3,12 @@
   background: radial-gradient(circle at top left, lighten($blue, 8%), $blue);
   color: white;
   border: 1px solid $gray-dark;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   text-align: right;
   flex-direction: column;
+  height: 30%;
 }
 
 .operations {
@@ -18,4 +19,5 @@
   font-size: 5em;
   font-weight: 400;
   padding-top: 1rem;
+  overflow-wrap: break-word;
 }

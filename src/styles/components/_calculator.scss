@@ -2,19 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .app {
   text-align: center;
-  height: 100vh;
+  box-shadow: 0px 10px 15px 5px rgba(darken($gray-dark, 10%), 0.2);
+  height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-}
-
-@media screen and (min-width: 800px) {
-  .app {
-    max-width: 40rem;
-    margin: 0 auto;
-  }
 }

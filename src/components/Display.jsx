@@ -3,10 +3,10 @@ import React from "react";
 const Display = ({ operations, result }) => (
   <div className="display">
     <div className="operations">
-      <span>{operations}</span>
+      <div>{operations}</div>
     </div>
     <div className="result">
-      <span>{result}</span>
+      <div>{result}</div>
     </div>
   </div>
 );

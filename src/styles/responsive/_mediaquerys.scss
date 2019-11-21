@@ -1,0 +1,28 @@
+@media screen and (min-width: 800px) and (min-height: 900px) {
+  .app {
+    max-width: 40rem;
+    height: 75%;
+    border-radius: $border-radius-app;
+  }
+
+  .display {
+    border-top-left-radius: $border-radius-app;
+    border-top-right-radius: $border-radius-app;
+  }
+
+  .button:nth-child(17) {
+    border-bottom-left-radius: $border-radius-app;
+  }
+
+  .equal {
+    border-bottom-right-radius: $border-radius-app;
+  }
+
+  .equal:hover {
+    background: darken($blue, 5%);
+  }
+
+  .button:hover {
+    background: $gray-dark;
+  }
+}

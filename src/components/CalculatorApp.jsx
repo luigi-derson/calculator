@@ -40,13 +40,16 @@ export default class CalculatorApp extends Component {
 
   handleOnClickOperator = operator => {
     const addOperatorToState = operatorName => {
-      this.setState(prevState => ({
-        operator: operatorName,
-        operations: prevState.operations + operator,
-        previousNumber: this.state.result,
-        currentNumber: ""
-      }));
+      if (this.state.currentNumber) {
+        this.setState(prevState => ({
+          operator: operatorName,
+          operations: prevState.operations + operator,
+          previousNumber: this.state.result,
+          currentNumber: ""
+        }));
+      }
     };
+
     switch (operator) {
       case "+": {
         return addOperatorToState("plus");
@@ -62,27 +65,10 @@ export default class CalculatorApp extends Component {
       }
 
       // I need to improve and make the cases below work
-      case "%": {
-        return this.setState(prevState => ({
-          operator: "percentage",
-          operations: prevState.operations + operator,
-          previousNumber: this.state.result,
-          currentNumber: ""
-        }));
-      }
-      case "±": {
-        const isNegative = parseFloat(this.state.currentNumber) < 0;
-        return this.setState(prevState => ({
-          operator: "invert",
-          operations: !isNegative
-            ? "-" + prevState.operations
-            : prevState.operations,
-          currentNumber: isNegative
-            ? parseFloat(this.state.currentNumber).toString()
-            : (-parseFloat(this.state.currentNumber)).toString(),
-          previousNumber: this.state.result.toString()
-        }));
-      }
+      // case "%": {
+      // }
+      // case "±": {
+      // }
       default:
         return this.state;
     }
